@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct EmoJournalApp: App {
+    @AppStorage("ColorIdx") private var colorIdx = 0
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
         }
     }
 }

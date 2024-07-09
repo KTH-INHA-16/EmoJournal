@@ -12,6 +12,12 @@
 		DB5CCB4F2C367BED006F7A2C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB5CCB4E2C367BED006F7A2C /* Preview Assets.xcassets */; };
 		DB5CCB562C367C95006F7A2C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5CCB552C367C95006F7A2C /* MainView.swift */; };
 		DB5CCB592C376D18006F7A2C /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = DB5CCB582C376D18006F7A2C /* ComposableArchitecture */; };
+		DB5CCB6D2C37849A006F7A2C /* Gradient+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5CCB6C2C37849A006F7A2C /* Gradient+.swift */; };
+		DB5CCB6F2C379467006F7A2C /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5CCB6E2C379467006F7A2C /* BackgroundView.swift */; };
+		DB5CCB712C37D71D006F7A2C /* SelectColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5CCB702C37D71D006F7A2C /* SelectColorView.swift */; };
+		DB5CCB732C37DF71006F7A2C /* Collection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5CCB722C37DF71006F7A2C /* Collection+.swift */; };
+		DBEDAFE52C3B6BCB005C675C /* GraidentModifer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEDAFE42C3B6BCB005C675C /* GraidentModifer.swift */; };
+		DBEDAFE72C3B6C03005C675C /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEDAFE62C3B6C03005C675C /* View+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +26,12 @@
 		DB5CCB4B2C367BED006F7A2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DB5CCB4E2C367BED006F7A2C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DB5CCB552C367C95006F7A2C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		DB5CCB6C2C37849A006F7A2C /* Gradient+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gradient+.swift"; sourceTree = "<group>"; };
+		DB5CCB6E2C379467006F7A2C /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		DB5CCB702C37D71D006F7A2C /* SelectColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorView.swift; sourceTree = "<group>"; };
+		DB5CCB722C37DF71006F7A2C /* Collection+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+.swift"; sourceTree = "<group>"; };
+		DBEDAFE42C3B6BCB005C675C /* GraidentModifer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraidentModifer.swift; sourceTree = "<group>"; };
+		DBEDAFE62C3B6C03005C675C /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +65,10 @@
 		DB5CCB462C367BEB006F7A2C /* EmoJournal */ = {
 			isa = PBXGroup;
 			children = (
+				DBEDAFE82C3CBBE8005C675C /* Util */,
 				DB5CCB472C367BEB006F7A2C /* EmoJournalApp.swift */,
+				DB5CCB6E2C379467006F7A2C /* BackgroundView.swift */,
+				DB5CCB702C37D71D006F7A2C /* SelectColorView.swift */,
 				DB5CCB552C367C95006F7A2C /* MainView.swift */,
 				DB5CCB4B2C367BED006F7A2C /* Assets.xcassets */,
 				DB5CCB4D2C367BED006F7A2C /* Preview Content */,
@@ -67,6 +82,17 @@
 				DB5CCB4E2C367BED006F7A2C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DBEDAFE82C3CBBE8005C675C /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				DB5CCB6C2C37849A006F7A2C /* Gradient+.swift */,
+				DB5CCB722C37DF71006F7A2C /* Collection+.swift */,
+				DBEDAFE42C3B6BCB005C675C /* GraidentModifer.swift */,
+				DBEDAFE62C3B6C03005C675C /* View+.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,8 +171,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB5CCB6F2C379467006F7A2C /* BackgroundView.swift in Sources */,
 				DB5CCB562C367C95006F7A2C /* MainView.swift in Sources */,
+				DB5CCB6D2C37849A006F7A2C /* Gradient+.swift in Sources */,
+				DB5CCB712C37D71D006F7A2C /* SelectColorView.swift in Sources */,
+				DBEDAFE72C3B6C03005C675C /* View+.swift in Sources */,
 				DB5CCB482C367BEB006F7A2C /* EmoJournalApp.swift in Sources */,
+				DBEDAFE52C3B6BCB005C675C /* GraidentModifer.swift in Sources */,
+				DB5CCB732C37DF71006F7A2C /* Collection+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +320,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -324,6 +357,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
