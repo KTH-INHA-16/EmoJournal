@@ -16,38 +16,48 @@ struct SelectColorView: View {
     private let names = ["Warm Flame","Amy Crisp","Blessing","Plum Plate","Aqua Splash"]
     
     var body: some View {
-        ScrollView {
-            ForEach(Array(zip(names.indices, names)), id: \.0,
-                    content: { idx, name in
-                VStack {
-                    HStack {
-                        Text(name)
-                            .font(.system(size: 15, weight: .medium))
-                            .padding(.leading, 20)
-                        Spacer()
-                    }
-                    .padding([.bottom, .top], 10)
-                    
-                    LinearGradient(stops: Gradient.gradientSet[idx], startPoint: .top, endPoint: .bottom)
-                        .frame(height: 250)
-                        .frame(maxWidth: .infinity)
-                        .clipShape(.circle)
-                        .onTapGesture {
-                            progress = 0.0
-                            previousIdx = colorIdx
-                            colorIdx = idx
-                            newIdx = idx
-                            isPresented = false
+        VStack {
+            HStack {
+                Text("Colors")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding(.leading, 25)
+                Spacer()
+            }
+            
+            ScrollView {
+                ForEach(Array(zip(names.indices, names)), id: \.0,
+                        content: { idx, name in
+                    VStack {
+                        HStack {
+                            Text(name)
+                                .font(.system(size: 15, weight: .medium))
+                                .padding(.leading, 20)
+                            Spacer()
                         }
-                    
-                    Divider()
-                        .overlay(.white)
-                        .padding([.leading, .trailing], 20)
-                        .padding(.top, 5)
-                }
-            })
+                        .padding([.bottom, .top], 10)
+                        
+                        LinearGradient(stops: Gradient.gradientSet[idx], startPoint: .top, endPoint: .bottom)
+                            .frame(height: 250)
+                            .frame(maxWidth: .infinity)
+                            .clipShape(.circle)
+                            .onTapGesture {
+                                progress = 0.0
+                                previousIdx = colorIdx
+                                colorIdx = idx
+                                newIdx = idx
+                                isPresented = false
+                            }
+                        
+                        Divider()
+                            .overlay(.white)
+                            .padding([.leading, .trailing], 20)
+                            .padding(.top, 5)
+                    }
+                })
+            }
+            .scrollIndicators(.hidden)
         }
-        .scrollIndicators(.hidden)
         .preferredColorScheme(.dark)
         
     }
