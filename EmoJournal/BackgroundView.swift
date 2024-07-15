@@ -5,22 +5,15 @@
 //  Created by 김태훈 on 7/5/24.
 //
 
+import ComposableArchitecture
 import SwiftUI
 
 struct BackgroundView: View {
-    @State private var progress: CGFloat = 0.0
-    @State private var isPresented: Bool = false
-    @State private var newIdx: Int = 0
-    @Binding var idx: Int
+    @Perception.Bindable var store: StoreOf<BackgroundFeature>
     
     var body: some View {
         ZStack {
-            
-            Rectangle()
-                .ignoresSafeArea()
-                .animatableGradient(fromGradientStops: Gradient.gradientSet[idx], 
-                                    toGradientStops: Gradient.gradientSet[newIdx],
-                                    progress: progress)
+            LinearGradient(stops: Gradient.gradientSet[store.idx], startPoint: .top, endPoint: .bottom)
             
             VStack {
                 Spacer()
@@ -28,7 +21,7 @@ struct BackgroundView: View {
                     Spacer()
                     
                     Button(action: {
-                        isPresented = true
+                        store.send(.settingButtonTapped)
                     }, label: {
                         Image("setting")
                             .frame(width:45, height: 45)
@@ -44,15 +37,15 @@ struct BackgroundView: View {
             }
         }
         .ignoresSafeArea(.all)
-        .sheet(isPresented: $isPresented, content: {
-            SelectColorView(isPresented: $isPresented,
-                            previousIdx: $idx, newIdx: $newIdx,
-                            progress: $progress)
+        .sheet(item: $store.scope(state: \.finishSetting, action: \.finishSetting)) { selectFeatureStore in
+            SelectColorView(store: selectFeatureStore)
                 .presentationDetents([.medium, .height(300)])
-        })
+        }
     }
 }
 
 #Preview {
-    BackgroundView(idx: .constant(0))
+    BackgroundView(store: Store(initialState: BackgroundFeature.State()) {
+        BackgroundFeature()
+    })
 }

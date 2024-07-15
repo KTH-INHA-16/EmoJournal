@@ -5,14 +5,11 @@
 //  Created by 김태훈 on 7/5/24.
 //
 
+import ComposableArchitecture
 import SwiftUI
 
 struct SelectColorView: View {
-    @AppStorage("ColorIdx") private var colorIdx = 0
-    @Binding var isPresented: Bool
-    @Binding var previousIdx: Int
-    @Binding var newIdx: Int
-    @Binding var progress: CGFloat
+    let store: StoreOf<SelectFeature>
     private let names = ["Warm Flame","Amy Crisp","Blessing","Plum Plate","Aqua Splash"]
     
     var body: some View {
@@ -24,6 +21,7 @@ struct SelectColorView: View {
                     .padding(.leading, 25)
                 Spacer()
             }
+            .padding(.top, 20)
             
             ScrollView {
                 ForEach(Array(zip(names.indices, names)), id: \.0,
@@ -37,17 +35,13 @@ struct SelectColorView: View {
                         }
                         .padding([.bottom, .top], 10)
                         
-                        LinearGradient(stops: Gradient.gradientSet[idx], startPoint: .top, endPoint: .bottom)
-                            .frame(height: 250)
-                            .frame(maxWidth: .infinity)
-                            .clipShape(.circle)
-                            .onTapGesture {
-                                progress = 0.0
-                                previousIdx = colorIdx
-                                colorIdx = idx
-                                newIdx = idx
-                                isPresented = false
-                            }
+                            LinearGradient(stops: Gradient.gradientSet[idx], startPoint: .top, endPoint: .bottom)
+                                .frame(height: 250)
+                                .frame(maxWidth: .infinity)
+                                .clipShape(.circle)
+                                .onTapGesture {
+                                    store.send(.tappedColorIdx(idx))
+                                }
                         
                         Divider()
                             .overlay(.white)
@@ -64,7 +58,8 @@ struct SelectColorView: View {
 }
 
 #Preview {
-    SelectColorView(isPresented: .constant(true),
-                    previousIdx: .constant(0), newIdx: .constant(0),
-                    progress: .constant(0.0))
+    SelectColorView(
+        store: Store(initialState: SelectFeature.State()) {
+            SelectFeature()
+    })
 }
