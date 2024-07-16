@@ -14,7 +14,6 @@ struct BackgroundFeature {
     struct State {
         @Presents var finishSetting: SelectFeature.State?
         @Shared(.appStorage("idx")) var idx: Int = 0
-        var progress: Double = 0.0
     }
     
     enum Action {

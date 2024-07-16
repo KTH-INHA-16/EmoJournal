@@ -16,6 +16,7 @@ struct MainView: View {
     var body: some View {
         ZStack {
             BackgroundView(store: MainView.store)
+            ListView()
         }
     }
 }

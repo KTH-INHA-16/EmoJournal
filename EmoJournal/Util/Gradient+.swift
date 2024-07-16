@@ -39,5 +39,10 @@ extension Gradient {
         Gradient.Stop(color: .saintPetersburg2, location: 1.0)
     ]
     
+    static let viciousStance: [Self.Stop] = [
+        Gradient.Stop(color: .viciousStance1, location: 0.0),
+        Gradient.Stop(color: .viciousStance2, location: 1.0)
+    ]
+    
     static let gradientSet: [[Self.Stop]] = [warmFlame, amyCrisp, blessing, plumPlate, aquaSplash]
 }

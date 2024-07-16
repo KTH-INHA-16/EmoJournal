@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB3E34302C46612900BED154 /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3E342F2C46612900BED154 /* WriteView.swift */; };
 		DB5CCB482C367BEB006F7A2C /* EmoJournalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5CCB472C367BEB006F7A2C /* EmoJournalApp.swift */; };
 		DB5CCB4C2C367BED006F7A2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB5CCB4B2C367BED006F7A2C /* Assets.xcassets */; };
 		DB5CCB4F2C367BED006F7A2C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB5CCB4E2C367BED006F7A2C /* Preview Assets.xcassets */; };
@@ -19,11 +20,15 @@
 		DBDE84AE2C3E0DFB00F4867F /* BackgroundFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE84AD2C3E0DFB00F4867F /* BackgroundFeature.swift */; };
 		DBDE84B22C3E796F00F4867F /* SelectFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE84B12C3E796F00F4867F /* SelectFeature.swift */; };
 		DBDE84C42C41268D00F4867F /* Enviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE84C32C41268D00F4867F /* Enviroment.swift */; };
+		DBDE84F52C44DD4900F4867F /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE84F42C44DD4900F4867F /* ListView.swift */; };
+		DBDE84F72C44DD8800F4867F /* ListFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE84F62C44DD8800F4867F /* ListFeature.swift */; };
+		DBDE84F92C4516EC00F4867F /* ListDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE84F82C4516EC00F4867F /* ListDetailView.swift */; };
 		DBEDAFE52C3B6BCB005C675C /* GraidentModifer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEDAFE42C3B6BCB005C675C /* GraidentModifer.swift */; };
 		DBEDAFE72C3B6C03005C675C /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEDAFE62C3B6C03005C675C /* View+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DB3E342F2C46612900BED154 /* WriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
 		DB5CCB442C367BEB006F7A2C /* EmoJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmoJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB5CCB472C367BEB006F7A2C /* EmoJournalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmoJournalApp.swift; sourceTree = "<group>"; };
 		DB5CCB4B2C367BED006F7A2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -36,6 +41,9 @@
 		DBDE84AD2C3E0DFB00F4867F /* BackgroundFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundFeature.swift; sourceTree = "<group>"; };
 		DBDE84B12C3E796F00F4867F /* SelectFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFeature.swift; sourceTree = "<group>"; };
 		DBDE84C32C41268D00F4867F /* Enviroment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enviroment.swift; sourceTree = "<group>"; };
+		DBDE84F42C44DD4900F4867F /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		DBDE84F62C44DD8800F4867F /* ListFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFeature.swift; sourceTree = "<group>"; };
+		DBDE84F82C4516EC00F4867F /* ListDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailView.swift; sourceTree = "<group>"; };
 		DBEDAFE42C3B6BCB005C675C /* GraidentModifer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraidentModifer.swift; sourceTree = "<group>"; };
 		DBEDAFE62C3B6C03005C675C /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,11 +81,15 @@
 			children = (
 				DBDE84C32C41268D00F4867F /* Enviroment.swift */,
 				DBDE84AD2C3E0DFB00F4867F /* BackgroundFeature.swift */,
-				DBDE84B12C3E796F00F4867F /* SelectFeature.swift */,
-				DB5CCB472C367BEB006F7A2C /* EmoJournalApp.swift */,
 				DB5CCB6E2C379467006F7A2C /* BackgroundView.swift */,
+				DBDE84B12C3E796F00F4867F /* SelectFeature.swift */,
 				DB5CCB702C37D71D006F7A2C /* SelectColorView.swift */,
+				DB5CCB472C367BEB006F7A2C /* EmoJournalApp.swift */,
+				DBDE84F42C44DD4900F4867F /* ListView.swift */,
+				DBDE84F82C4516EC00F4867F /* ListDetailView.swift */,
+				DBDE84F62C44DD8800F4867F /* ListFeature.swift */,
 				DB5CCB552C367C95006F7A2C /* MainView.swift */,
+				DB3E342F2C46612900BED154 /* WriteView.swift */,
 				DB5CCB4B2C367BED006F7A2C /* Assets.xcassets */,
 				DBEDAFE82C3CBBE8005C675C /* Util */,
 				DB5CCB4D2C367BED006F7A2C /* Preview Content */,
@@ -182,15 +194,19 @@
 			files = (
 				DBDE84B22C3E796F00F4867F /* SelectFeature.swift in Sources */,
 				DBDE84C42C41268D00F4867F /* Enviroment.swift in Sources */,
+				DB3E34302C46612900BED154 /* WriteView.swift in Sources */,
 				DB5CCB6F2C379467006F7A2C /* BackgroundView.swift in Sources */,
 				DB5CCB562C367C95006F7A2C /* MainView.swift in Sources */,
 				DB5CCB6D2C37849A006F7A2C /* Gradient+.swift in Sources */,
 				DBDE84AE2C3E0DFB00F4867F /* BackgroundFeature.swift in Sources */,
+				DBDE84F72C44DD8800F4867F /* ListFeature.swift in Sources */,
 				DB5CCB712C37D71D006F7A2C /* SelectColorView.swift in Sources */,
 				DBEDAFE72C3B6C03005C675C /* View+.swift in Sources */,
+				DBDE84F52C44DD4900F4867F /* ListView.swift in Sources */,
 				DB5CCB482C367BEB006F7A2C /* EmoJournalApp.swift in Sources */,
 				DBEDAFE52C3B6BCB005C675C /* GraidentModifer.swift in Sources */,
 				DB5CCB732C37DF71006F7A2C /* Collection+.swift in Sources */,
+				DBDE84F92C4516EC00F4867F /* ListDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
