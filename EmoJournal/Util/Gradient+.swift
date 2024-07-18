@@ -44,5 +44,10 @@ extension Gradient {
         Gradient.Stop(color: .viciousStance2, location: 1.0)
     ]
     
+    static let cleanMirror: [Self.Stop] = [
+        Gradient.Stop(color: .cleanMirror1.opacity(0.6), location: 0.0),
+        Gradient.Stop(color: .cleanMirror2.opacity(0.6), location: 1.0)
+    ]
+    
     static let gradientSet: [[Self.Stop]] = [warmFlame, amyCrisp, blessing, plumPlate, aquaSplash]
 }

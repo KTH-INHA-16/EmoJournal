@@ -14,30 +14,29 @@ struct ListDetailView: View {
                 Text("hello")
                     .font(.largeTitle)
                     .fontWeight(.light)
-                    .background(Color.green)
                     .padding(.top, 15)
+                    .padding(.leading, 10)
+                
                 Spacer()
                 
                 Text("Lorem Ipsum")
                     .padding(.top, 15)
+                    .padding(.trailing, 10)
             }
             .frame(height: 50)
             .padding(.bottom, 10)
-            .background(.gray.opacity(0.3))
             
             HStack {
-                GeometryReader { geo in
-                    Image("")
-                        .frame(width: geo.size.width - 10, height: 140)
-                        .padding(.horizontal, 5)
-                        .background(.red)
-                }
+                Image("")
+                    .frame(width: UIScreen.main.bounds.width - 40)
+                    .frame(minHeight: 0, maxHeight: 140)
             }
             .frame(height: 140)
             .background(.gray.opacity(0.3))
             
             Text("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")
                 .frame(maxHeight: 120)
+                .padding(.horizontal, 10)
                 .multilineTextAlignment(.leading)
             
             Divider()
@@ -45,6 +44,7 @@ struct ListDetailView: View {
             
             HStack {
                 Text("2023년 05월 14일")
+                    .padding(.leading, 10)
                 
                 Spacer()
                 
@@ -69,14 +69,20 @@ struct ListDetailView: View {
                     Image(systemName: "ellipsis")
                         .foregroundColor(.gray)
                         .frame(width: 30, height: 30)
-                        .background(.red)
                 })
             }
             .frame(height: 30)
         }
         .frame(minHeight: 200, maxHeight: 400)
+        .background(.opacity(0.0))
+        .background(.thinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .overlay {
+            RoundedRectangle(cornerRadius: 12.0)
+                .stroke(LinearGradient(stops: Gradient.cleanMirror, startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 2.0)
+        }
+        .shadow(color: .gray.opacity(0.1), radius: 1, x: 3, y: 3)
         .padding(.horizontal, 10)
-        .background(Color.orange)
     }
 }
 

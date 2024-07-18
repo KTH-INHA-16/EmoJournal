@@ -14,19 +14,25 @@ struct ListView: View {
         ZStack {
             ScrollView {
                 ListDetailView()
+                    .padding(.bottom, 30)
                 ListDetailView()
+                    .padding(.bottom, 30)
                 ListDetailView()
+                    .padding(.bottom, 30)
                 ListDetailView()
+                    .padding(.bottom, 30)
                 ListDetailView()
+                    .padding(.bottom, 30)
                 ListDetailView()
+                    .padding(.bottom, 30)
                 ListDetailView()
+                    .padding(.bottom, 30)
                     
             }
+            .background(.opacity(0.0))
             .scrollIndicators(.hidden)
             .padding(.horizontal)
-            .padding(.top, 10)
             .padding(.bottom, 60)
-            .background(Color.red.opacity(0.4))
             
             VStack {
                 Spacer()
@@ -35,11 +41,11 @@ struct ListView: View {
                     isPresentd = true
                 }, label: {
                     Image(systemName: "plus")
+                        .foregroundStyle(.white)
                         .font(.title)
                     
                 })
                 .frame(width: 50, height: 50)
-                .foregroundStyle(.gray.opacity(0.8))
                 .background(
                     LinearGradient(stops: Gradient.viciousStance,
                                    startPoint: .topLeading,

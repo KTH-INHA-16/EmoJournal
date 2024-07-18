@@ -15,8 +15,9 @@ struct MainView: View {
     
     var body: some View {
         ZStack {
-            BackgroundView(store: MainView.store)
-            ListView()
+            WriteView(isPresented: .constant(true))
+//            BackgroundView(store: MainView.store)
+//            ListView()
         }
     }
 }
