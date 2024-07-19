@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		DB3E34302C46612900BED154 /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3E342F2C46612900BED154 /* WriteView.swift */; };
+		DB3E34392C4A56B300BED154 /* SpeechClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3E34382C4A56B300BED154 /* SpeechClient.swift */; };
+		DB3E343B2C4A57BC00BED154 /* SpeechClientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3E343A2C4A57BC00BED154 /* SpeechClientModel.swift */; };
 		DB5CCB482C367BEB006F7A2C /* EmoJournalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5CCB472C367BEB006F7A2C /* EmoJournalApp.swift */; };
 		DB5CCB4C2C367BED006F7A2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB5CCB4B2C367BED006F7A2C /* Assets.xcassets */; };
 		DB5CCB4F2C367BED006F7A2C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB5CCB4E2C367BED006F7A2C /* Preview Assets.xcassets */; };
@@ -29,6 +31,9 @@
 
 /* Begin PBXFileReference section */
 		DB3E342F2C46612900BED154 /* WriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
+		DB3E34312C4A3F0700BED154 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		DB3E34382C4A56B300BED154 /* SpeechClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechClient.swift; sourceTree = "<group>"; };
+		DB3E343A2C4A57BC00BED154 /* SpeechClientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechClientModel.swift; sourceTree = "<group>"; };
 		DB5CCB442C367BEB006F7A2C /* EmoJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmoJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB5CCB472C367BEB006F7A2C /* EmoJournalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmoJournalApp.swift; sourceTree = "<group>"; };
 		DB5CCB4B2C367BED006F7A2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -79,6 +84,7 @@
 		DB5CCB462C367BEB006F7A2C /* EmoJournal */ = {
 			isa = PBXGroup;
 			children = (
+				DB3E34312C4A3F0700BED154 /* Info.plist */,
 				DBDE84C32C41268D00F4867F /* Enviroment.swift */,
 				DBDE84AD2C3E0DFB00F4867F /* BackgroundFeature.swift */,
 				DB5CCB6E2C379467006F7A2C /* BackgroundView.swift */,
@@ -93,6 +99,8 @@
 				DB5CCB4B2C367BED006F7A2C /* Assets.xcassets */,
 				DBEDAFE82C3CBBE8005C675C /* Util */,
 				DB5CCB4D2C367BED006F7A2C /* Preview Content */,
+				DB3E34382C4A56B300BED154 /* SpeechClient.swift */,
+				DB3E343A2C4A57BC00BED154 /* SpeechClientModel.swift */,
 			);
 			path = EmoJournal;
 			sourceTree = "<group>";
@@ -201,7 +209,9 @@
 				DBDE84AE2C3E0DFB00F4867F /* BackgroundFeature.swift in Sources */,
 				DBDE84F72C44DD8800F4867F /* ListFeature.swift in Sources */,
 				DB5CCB712C37D71D006F7A2C /* SelectColorView.swift in Sources */,
+				DB3E343B2C4A57BC00BED154 /* SpeechClientModel.swift in Sources */,
 				DBEDAFE72C3B6C03005C675C /* View+.swift in Sources */,
+				DB3E34392C4A56B300BED154 /* SpeechClient.swift in Sources */,
 				DBDE84F52C44DD4900F4867F /* ListView.swift in Sources */,
 				DB5CCB482C367BEB006F7A2C /* EmoJournalApp.swift in Sources */,
 				DBEDAFE52C3B6BCB005C675C /* GraidentModifer.swift in Sources */,
@@ -343,8 +353,11 @@
 				DEVELOPMENT_TEAM = TGR2SR2JNL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EmoJournal/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = EmoJournal;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "마이크 사용";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "음성 인식 사용";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -380,8 +393,11 @@
 				DEVELOPMENT_TEAM = TGR2SR2JNL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EmoJournal/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = EmoJournal;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "마이크 사용";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "음성 인식 사용";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
