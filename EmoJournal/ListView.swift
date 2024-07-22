@@ -5,6 +5,7 @@
 //  Created by 김태훈 on 7/15/24.
 //
 
+import ComposableArchitecture
 import SwiftUI
 
 struct ListView: View {
@@ -56,7 +57,9 @@ struct ListView: View {
             .background(.opacity(0.0))
         }
         .fullScreenCover(isPresented: $isPresentd, content: {
-            WriteView(isPresented: $isPresentd)
+            WriteView(store: Store(initialState: WriteFeature.State()) {
+                WriteFeature()
+            }, isPresented: $isPresentd)
         })
         .onAppear {
             UIScrollView.appearance().bounces = false

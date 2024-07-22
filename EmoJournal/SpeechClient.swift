@@ -123,7 +123,7 @@ private actor Speech {
             }
             
             self.audioEngine = AVAudioEngine()
-            let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))!
+            let speechRecognizer = SFSpeechRecognizer(locale: Locale.current)!
             self.recognitionTask = speechRecognizer.recognitionTask(with: request) { result, error in
                 switch (result, error) {
                 case let (.some(result), _):

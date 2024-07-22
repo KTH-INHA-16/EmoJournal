@@ -5,18 +5,17 @@
 //  Created by 김태훈 on 7/16/24.
 //
 
+import ComposableArchitecture
 import SwiftUI
+@_spi(Advanced) import SwiftUIIntrospect
 import PhotosUI
 
 struct WriteView: View {
+    @Perception.Bindable var store: StoreOf<WriteFeature>
     @Binding var isPresented: Bool
     @State private var avatarItem: PhotosPickerItem?
     @State private var imageData: Data? = nil
     @State private var isAnimate = false
-    @State private var text = """
-    What is Lorem Ipsum?
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum..\n\n\n\n\n\n\n\n\n\n\n\na
-    """
     
     var body: some View {
         NavigationStack {
@@ -44,7 +43,7 @@ struct WriteView: View {
                     }
 
                     ZStack(alignment: .topLeading) {
-                        if text.isEmpty {
+                        if store.text.isEmpty {
                             Text("내용을 입력하세요.")
                                 .foregroundStyle(.gray)
                                 .font(.system(size: 16))
@@ -52,7 +51,13 @@ struct WriteView: View {
                                 .padding(.vertical, 12)
                         }
                         
-                        TextEditor(text: $text)
+                        TextEditor(text: $store.text.sending(\.textChanged))
+                            .introspect(.textEditor, on: .iOS(.v14, .v15, .v16, .v17, .v18)) { textView in
+                                if let range = textView.selectedTextRange {
+                                    let cursorPosition = textView.offset(from: textView.beginningOfDocument, to: range.start)
+                                    store.send(.cursorChange(cursorPosition))
+                                }
+                            }
                             .scrollIndicators(.hidden)
                             .scrollContentBackground(.hidden)
                             .foregroundStyle(.white)
@@ -103,9 +108,9 @@ struct WriteView: View {
                             .offset(x: 0, y: geo.size.height + geo.safeAreaInsets.bottom - 50)
                             
                             Button(action: {
-                                
+                                store.send(.recordButtonTapped)
                             }, label: {
-                                Image(systemName: "mic")
+                                Image(systemName: store.isRecording == true ? "mic.slash" : "mic")
                                     .foregroundStyle(.white)
                             })
                             .frame(width: geo.size.width / 2, height: 50)
@@ -123,5 +128,7 @@ struct WriteView: View {
 }
 
 #Preview {
-    WriteView(isPresented: .constant(false))
+    WriteView(store: Store(initialState: WriteFeature.State()) {
+        WriteFeature()
+    }, isPresented: .constant(false))
 }

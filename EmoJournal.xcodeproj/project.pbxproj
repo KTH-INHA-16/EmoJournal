@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB15B75E2C4E40F900113F13 /* WriteFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB15B75D2C4E40F900113F13 /* WriteFeature.swift */; };
+		DB15B7612C4E45E100113F13 /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = DB15B7602C4E45E100113F13 /* SwiftUIIntrospect */; };
 		DB3E34302C46612900BED154 /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3E342F2C46612900BED154 /* WriteView.swift */; };
 		DB3E34392C4A56B300BED154 /* SpeechClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3E34382C4A56B300BED154 /* SpeechClient.swift */; };
 		DB3E343B2C4A57BC00BED154 /* SpeechClientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3E343A2C4A57BC00BED154 /* SpeechClientModel.swift */; };
@@ -30,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DB15B75D2C4E40F900113F13 /* WriteFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteFeature.swift; sourceTree = "<group>"; };
 		DB3E342F2C46612900BED154 /* WriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
 		DB3E34312C4A3F0700BED154 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DB3E34382C4A56B300BED154 /* SpeechClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechClient.swift; sourceTree = "<group>"; };
@@ -59,17 +62,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB5CCB592C376D18006F7A2C /* ComposableArchitecture in Frameworks */,
+				DB15B7612C4E45E100113F13 /* SwiftUIIntrospect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB15B7662C4E516500113F13 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DB5CCB3B2C367BEB006F7A2C = {
 			isa = PBXGroup;
 			children = (
 				DB5CCB462C367BEB006F7A2C /* EmoJournal */,
 				DB5CCB452C367BEB006F7A2C /* Products */,
+				DB15B7662C4E516500113F13 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,6 +108,7 @@
 				DBDE84F62C44DD8800F4867F /* ListFeature.swift */,
 				DB5CCB552C367C95006F7A2C /* MainView.swift */,
 				DB3E342F2C46612900BED154 /* WriteView.swift */,
+				DB15B75D2C4E40F900113F13 /* WriteFeature.swift */,
 				DB5CCB4B2C367BED006F7A2C /* Assets.xcassets */,
 				DBEDAFE82C3CBBE8005C675C /* Util */,
 				DB5CCB4D2C367BED006F7A2C /* Preview Content */,
@@ -142,6 +155,7 @@
 			name = EmoJournal;
 			packageProductDependencies = (
 				DB5CCB582C376D18006F7A2C /* ComposableArchitecture */,
+				DB15B7602C4E45E100113F13 /* SwiftUIIntrospect */,
 			);
 			productName = EmoJournal;
 			productReference = DB5CCB442C367BEB006F7A2C /* EmoJournal.app */;
@@ -173,6 +187,7 @@
 			mainGroup = DB5CCB3B2C367BEB006F7A2C;
 			packageReferences = (
 				DB5CCB572C376D18006F7A2C /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				DB15B75F2C4E45E100113F13 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = DB5CCB452C367BEB006F7A2C /* Products */;
 			projectDirPath = "";
@@ -209,6 +224,7 @@
 				DBDE84AE2C3E0DFB00F4867F /* BackgroundFeature.swift in Sources */,
 				DBDE84F72C44DD8800F4867F /* ListFeature.swift in Sources */,
 				DB5CCB712C37D71D006F7A2C /* SelectColorView.swift in Sources */,
+				DB15B75E2C4E40F900113F13 /* WriteFeature.swift in Sources */,
 				DB3E343B2C4A57BC00BED154 /* SpeechClientModel.swift in Sources */,
 				DBEDAFE72C3B6C03005C675C /* View+.swift in Sources */,
 				DB3E34392C4A56B300BED154 /* SpeechClient.swift in Sources */,
@@ -446,6 +462,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		DB15B75F2C4E45E100113F13 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.0;
+			};
+		};
 		DB5CCB572C376D18006F7A2C /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
@@ -457,6 +481,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		DB15B7602C4E45E100113F13 /* SwiftUIIntrospect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DB15B75F2C4E45E100113F13 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = SwiftUIIntrospect;
+		};
 		DB5CCB582C376D18006F7A2C /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DB5CCB572C376D18006F7A2C /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
