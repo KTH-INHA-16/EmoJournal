@@ -12,28 +12,22 @@ import PhotosUI
 
 struct WriteView: View {
     @Perception.Bindable var store: StoreOf<WriteFeature>
-    @Binding var isPresented: Bool
-    @State private var avatarItem: PhotosPickerItem?
-    @State private var imageData: Data? = nil
-    @State private var isAnimate = false
     
     var body: some View {
         NavigationStack {
             ZStack {
                 VStack {
-                    if let imageData = self.imageData, let image = UIImage(data: imageData) {
+                    if let image = store.image?.image {
                         ZStack(alignment: .topTrailing) {
                             Image(uiImage: image)
                                 .resizable()
-                                .animation(.linear(duration: 1), value: isAnimate)
+                                .animation(.linear(duration: 1), value: store.isAnimate)
                                 .frame(width: UIScreen.main.bounds.width - 40, height: 140)
                             
                                 
                             
                             Button(action: {
-                                self.imageData = nil
-                                self.avatarItem = nil
-                                self.isAnimate = true
+                                store.send(.photoCancelButtonTapped)
                             }, label: {
                                 Image(systemName: "x.circle.fill")
                                     .foregroundStyle(Color(.white))
@@ -53,6 +47,7 @@ struct WriteView: View {
                         
                         TextEditor(text: $store.text.sending(\.textChanged))
                             .introspect(.textEditor, on: .iOS(.v14, .v15, .v16, .v17, .v18)) { textView in
+                                
                                 if let range = textView.selectedTextRange {
                                     let cursorPosition = textView.offset(from: textView.beginningOfDocument, to: range.start)
                                     store.send(.cursorChange(cursorPosition))
@@ -64,7 +59,7 @@ struct WriteView: View {
                             .toolbar {
                                 ToolbarItem(placement: .topBarLeading, content: {
                                     Button(action: {
-                                        isPresented = false
+                                        store.send(.cancelButtonTapped)
                                     }, label: {
                                         Image(systemName: "chevron.backward")
                                             .frame(width: 15)
@@ -89,19 +84,11 @@ struct WriteView: View {
                     HStack {
                         GeometryReader { geo in
                             
-                            PhotosPicker(selection: $avatarItem, 
+                            PhotosPicker(selection: $store.avatarItem.sending(\.photoLibraryButtonTapped), 
                                          matching: .any(of: [.images, .not(.screenshots)]),
                                          label: {
                                 Image(systemName: "photo")
                                     .foregroundStyle(.white)
-                            })
-                            .task(id: avatarItem, {
-                                if let loaded = try? await avatarItem?.loadTransferable(type: Data.self) {
-                                    withAnimation {
-                                        self.imageData = loaded
-                                        isAnimate = true
-                                    }
-                                }
                             })
                             .frame(width: geo.size.width / 2, height: 50)
                             .background(Color.darkBackground.opacity(0.7))
@@ -130,5 +117,5 @@ struct WriteView: View {
 #Preview {
     WriteView(store: Store(initialState: WriteFeature.State()) {
         WriteFeature()
-    }, isPresented: .constant(false))
+    })
 }

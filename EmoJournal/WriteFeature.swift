@@ -7,6 +7,7 @@
 
 import ComposableArchitecture
 import Speech
+import PhotosUI
 import SwiftUI
 
 @Reducer
@@ -16,26 +17,57 @@ struct WriteFeature {
         @Presents var alert: AlertState<Action.Alert>?
         var cursorPoint = 0
         var isRecording = false
+        var isAnimate = false
         var text = ""
+        var image: WriteImage? = nil
+        var avatarItem: PhotosPickerItem? = nil
     }
     
     enum Action {
         case textChanged(String)
         case cursorChange(Int)
         case alert(PresentationAction<Alert>)
+        case cancelButtonTapped
+        case photoCancelButtonTapped
         case recordButtonTapped
         case speech(Result<String, Error>)
         case speechRecognizerAuthorizationStatusResponse(SFSpeechRecognizerAuthorizationStatus)
+        case photoLibraryButtonTapped(PhotosPickerItem?)
+        case photoLibrary(WriteImage?)
+        case delegate(Delegate)
         
         enum Alert: Equatable {}
+        
+        enum Delegate: Equatable {
+            case finishWriting
+        }
     }
     
+    @Dependency(\.photoClient) var photoClient
     @Dependency(\.speechClient) var speechClient
+    @Dependency(\.dismiss) var dismiss
     
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
             case .alert:
+                return .none
+                
+            case .cancelButtonTapped:
+                return .run { send in
+                    await send(.delegate(.finishWriting))
+                    await self.dismiss()
+                }
+                
+            case .photoCancelButtonTapped:
+                state.avatarItem = nil
+                state.image = nil
+                state.isAnimate = false
+                return .none
+                
+            case let .photoLibrary(image):
+                state.image = image
+                state.isAnimate = true
                 return .none
                 
             case let .textChanged(text):
@@ -44,9 +76,20 @@ struct WriteFeature {
                 
             case let .cursorChange(cursorPoint):
                 state.cursorPoint = cursorPoint
-                print("cursor: ", cursorPoint)
                 
                 return .none
+                
+            case let .photoLibraryButtonTapped(avatarItem):
+                state.avatarItem = avatarItem
+                
+                return .run(priority: .low, operation: { [avatarItem = state.avatarItem] send in
+                    let data = try await self.photoClient.load(item: avatarItem)
+                    
+                    await send(.photoLibrary(data))
+                    
+                }, catch: { error, send in
+                    await send(.speech(.failure(error)))
+                })
             
             case .recordButtonTapped:
                 state.isRecording.toggle()
@@ -86,10 +129,10 @@ struct WriteFeature {
                 return .none
             
             case let .speech(.success(transcribedText)):
-                print("index: ", state.cursorPoint)
                 let index = state.text.index(state.text.startIndex, offsetBy: state.cursorPoint)
                 
                 state.text.insert(contentsOf: transcribedText, at: index)
+                state.cursorPoint += transcribedText.count
                 
                 return .none
                 
@@ -122,6 +165,9 @@ struct WriteFeature {
                 @unknown default:
                     return .none
                 }
+                
+            case .delegate:
+                return .none
             }
         }
         .ifLet(\.$alert, action: \.alert)

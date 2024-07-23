@@ -9,6 +9,7 @@ import ComposableArchitecture
 import SwiftUI
 
 struct ListView: View {
+    @Perception.Bindable var store: StoreOf<ListViewFeature>
     @State private var isPresentd = false
     
     var body: some View {
@@ -39,7 +40,7 @@ struct ListView: View {
                 Spacer()
                 
                 Button(action: {
-                    isPresentd = true
+                    store.send(.writeButtonTapped)
                 }, label: {
                     Image(systemName: "plus")
                         .foregroundStyle(.white)
@@ -56,10 +57,10 @@ struct ListView: View {
             }
             .background(.opacity(0.0))
         }
-        .fullScreenCover(isPresented: $isPresentd, content: {
-            WriteView(store: Store(initialState: WriteFeature.State()) {
-                WriteFeature()
-            }, isPresented: $isPresentd)
+        
+        .fullScreenCover(item: $store.scope(state: \.finishWriting, action: \.finishWriting), 
+                         content: { WriteFeatureStore in
+            WriteView(store: WriteFeatureStore)
         })
         .onAppear {
             UIScrollView.appearance().bounces = false
@@ -71,5 +72,7 @@ struct ListView: View {
 }
 
 #Preview {
-    ListView()
+    ListView(store: Store(initialState: ListViewFeature.State()) {
+        ListViewFeature()
+    })
 }

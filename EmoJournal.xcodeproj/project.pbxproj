@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		DB15B75E2C4E40F900113F13 /* WriteFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB15B75D2C4E40F900113F13 /* WriteFeature.swift */; };
 		DB15B7612C4E45E100113F13 /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = DB15B7602C4E45E100113F13 /* SwiftUIIntrospect */; };
+		DB15B76A2C4F7C4100113F13 /* PhotoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB15B7692C4F7C4100113F13 /* PhotoClient.swift */; };
+		DB15B76C2C4F96B000113F13 /* PhotoClientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB15B76B2C4F96B000113F13 /* PhotoClientModel.swift */; };
+		DB15B76E2C4FA0E100113F13 /* ListViewFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB15B76D2C4FA0E100113F13 /* ListViewFeature.swift */; };
 		DB3E34302C46612900BED154 /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3E342F2C46612900BED154 /* WriteView.swift */; };
 		DB3E34392C4A56B300BED154 /* SpeechClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3E34382C4A56B300BED154 /* SpeechClient.swift */; };
 		DB3E343B2C4A57BC00BED154 /* SpeechClientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3E343A2C4A57BC00BED154 /* SpeechClientModel.swift */; };
@@ -33,6 +36,9 @@
 
 /* Begin PBXFileReference section */
 		DB15B75D2C4E40F900113F13 /* WriteFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteFeature.swift; sourceTree = "<group>"; };
+		DB15B7692C4F7C4100113F13 /* PhotoClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoClient.swift; sourceTree = "<group>"; };
+		DB15B76B2C4F96B000113F13 /* PhotoClientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoClientModel.swift; sourceTree = "<group>"; };
+		DB15B76D2C4FA0E100113F13 /* ListViewFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewFeature.swift; sourceTree = "<group>"; };
 		DB3E342F2C46612900BED154 /* WriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
 		DB3E34312C4A3F0700BED154 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DB3E34382C4A56B300BED154 /* SpeechClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechClient.swift; sourceTree = "<group>"; };
@@ -114,6 +120,9 @@
 				DB5CCB4D2C367BED006F7A2C /* Preview Content */,
 				DB3E34382C4A56B300BED154 /* SpeechClient.swift */,
 				DB3E343A2C4A57BC00BED154 /* SpeechClientModel.swift */,
+				DB15B7692C4F7C4100113F13 /* PhotoClient.swift */,
+				DB15B76B2C4F96B000113F13 /* PhotoClientModel.swift */,
+				DB15B76D2C4FA0E100113F13 /* ListViewFeature.swift */,
 			);
 			path = EmoJournal;
 			sourceTree = "<group>";
@@ -218,10 +227,13 @@
 				DBDE84B22C3E796F00F4867F /* SelectFeature.swift in Sources */,
 				DBDE84C42C41268D00F4867F /* Enviroment.swift in Sources */,
 				DB3E34302C46612900BED154 /* WriteView.swift in Sources */,
+				DB15B76E2C4FA0E100113F13 /* ListViewFeature.swift in Sources */,
 				DB5CCB6F2C379467006F7A2C /* BackgroundView.swift in Sources */,
 				DB5CCB562C367C95006F7A2C /* MainView.swift in Sources */,
 				DB5CCB6D2C37849A006F7A2C /* Gradient+.swift in Sources */,
 				DBDE84AE2C3E0DFB00F4867F /* BackgroundFeature.swift in Sources */,
+				DB15B76C2C4F96B000113F13 /* PhotoClientModel.swift in Sources */,
+				DB15B76A2C4F7C4100113F13 /* PhotoClient.swift in Sources */,
 				DBDE84F72C44DD8800F4867F /* ListFeature.swift in Sources */,
 				DB5CCB712C37D71D006F7A2C /* SelectColorView.swift in Sources */,
 				DB15B75E2C4E40F900113F13 /* WriteFeature.swift in Sources */,
