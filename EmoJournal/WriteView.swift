@@ -6,8 +6,8 @@
 //
 
 import ComposableArchitecture
-import SwiftUI
 @_spi(Advanced) import SwiftUIIntrospect
+import SwiftUI
 import PhotosUI
 
 struct WriteView: View {
@@ -17,14 +17,15 @@ struct WriteView: View {
         NavigationStack {
             ZStack {
                 VStack {
-                    if let image = store.image?.image {
-                        ZStack(alignment: .topTrailing) {
+                    ZStack(alignment: .topTrailing) {
+                        if let image = store.image?.image {
                             Image(uiImage: image)
                                 .resizable()
-                                .animation(.linear(duration: 1), value: store.isAnimate)
-                                .frame(width: UIScreen.main.bounds.width - 40, height: 140)
+                                .transition(.opacity)
+                                .frame(width: UIScreen.main.bounds.width - 40, height: store.image == nil ? 0 : 140)
+                                .clipShape(RoundedRectangle(cornerRadius: 12.0))
                             
-                                
+                            
                             
                             Button(action: {
                                 store.send(.photoCancelButtonTapped)
@@ -32,9 +33,11 @@ struct WriteView: View {
                                 Image(systemName: "x.circle.fill")
                                     .foregroundStyle(Color(.white))
                             })
+                            .transition(.opacity)
                             .padding([.trailing, .top], 5)
                         }
                     }
+                    .animation(.linear(duration: 0.2), value: store.image)
 
                     ZStack(alignment: .topLeading) {
                         if store.text.isEmpty {
@@ -43,9 +46,11 @@ struct WriteView: View {
                                 .font(.system(size: 16))
                                 .padding(.horizontal, 5)
                                 .padding(.vertical, 12)
+                                .transition(.slide)
                         }
                         
                         TextEditor(text: $store.text.sending(\.textChanged))
+                            .transition(.slide)
                             .introspect(.textEditor, on: .iOS(.v14, .v15, .v16, .v17, .v18)) { textView in
                                 
                                 if let range = textView.selectedTextRange {
@@ -68,11 +73,37 @@ struct WriteView: View {
                                     })
                                     .foregroundColor(.white)
                                 })
+                                
+                                ToolbarItem(placement: .principal, content: {
+                                    
+                                    Text(store.writeDate.formatted(.iso8601.year().month().day()))
+                                        .foregroundStyle(.white)
+                                        .overlay {
+                                            DatePicker(selection: $store.writeDate.sending(\.datePickerTapped),
+                                                       displayedComponents: .date,
+                                                       label: {})
+                                                  .colorInvert()
+                                                  .labelsHidden()
+                                                  .colorMultiply(.clear)
+                                        }
+                                })
+                                
+                                ToolbarItem(placement: .topBarTrailing, content: {
+                                    Button(action: {
+                                        store.send(.saveButtonTapped)
+                                    }, label: {
+                                        Text("저장")
+                                            .font(.system(size: 20))
+                                            .bold()
+                                    })
+                                    .foregroundStyle(.white)
+                                })
                             }
-                            .navigationTitle("오늘의 일기")
                     }
+                    .navigationBarTitleDisplayMode(.inline)
+                    .animation(.linear(duration: 0.2), value: store.image)
                     .padding(.horizontal, 20)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .frame(maxWidth: .infinity)
                 }
                 .background(
                     LinearGradient(stops: Gradient.viciousStance,
@@ -89,16 +120,22 @@ struct WriteView: View {
                                          label: {
                                 Image(systemName: "photo")
                                     .foregroundStyle(.white)
+                                    .imageScale(.small)
+                                    .frame(width: 50, height: 50)
+                                
                             })
                             .frame(width: geo.size.width / 2, height: 50)
                             .background(Color.darkBackground.opacity(0.7))
                             .offset(x: 0, y: geo.size.height + geo.safeAreaInsets.bottom - 50)
+
                             
                             Button(action: {
                                 store.send(.recordButtonTapped)
                             }, label: {
                                 Image(systemName: store.isRecording == true ? "mic.slash" : "mic")
                                     .foregroundStyle(.white)
+                                    .imageScale(.small)
+                                    .frame(width: 50, height: 50)
                             })
                             .frame(width: geo.size.width / 2, height: 50)
                             .background(Color.darkBackground.opacity(0.7))
@@ -107,9 +144,7 @@ struct WriteView: View {
                     }
                 }
             }
-        }
-        .onAppear {
-            UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+            .animation(.linear(duration: 0.2), value: store.image)
         }
     }
 }

@@ -26,9 +26,12 @@ struct ListViewFeature {
             case .writeButtonTapped:
                 state.finishWriting = WriteFeature.State()
                 return .none
-            case .finishWriting(.presented(.delegate(.finishWriting))):
+            case .finishWriting(.presented(.delegate(.quitWriting))):
                 return .none
-            @unknown default:
+            case let .finishWriting(.presented(.delegate(.saveWriting(text, image, date)))):
+                print(text, image, date)
+                return .none
+            default:
                 return .none
             }
         }

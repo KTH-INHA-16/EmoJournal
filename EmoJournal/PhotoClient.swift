@@ -16,12 +16,13 @@ struct PhotoClient {
 
 extension PhotoClient: DependencyKey {
     static let liveValue = Self { item in
+        
         let data = try await item?.loadTransferable(type: Data.self)
         guard let imgData = data else {
             return nil
         }
         
-        return WriteImage(image: UIImage(data: imgData))
+        return WriteImage(data: imgData, image: UIImage(data: imgData))
     }
 }
 

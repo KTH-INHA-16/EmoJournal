@@ -19,6 +19,7 @@ struct WriteFeature {
         var isRecording = false
         var isAnimate = false
         var text = ""
+        var writeDate = Date()
         var image: WriteImage? = nil
         var avatarItem: PhotosPickerItem? = nil
     }
@@ -28,8 +29,10 @@ struct WriteFeature {
         case cursorChange(Int)
         case alert(PresentationAction<Alert>)
         case cancelButtonTapped
+        case saveButtonTapped
         case photoCancelButtonTapped
         case recordButtonTapped
+        case datePickerTapped(Date)
         case speech(Result<String, Error>)
         case speechRecognizerAuthorizationStatusResponse(SFSpeechRecognizerAuthorizationStatus)
         case photoLibraryButtonTapped(PhotosPickerItem?)
@@ -39,7 +42,8 @@ struct WriteFeature {
         enum Alert: Equatable {}
         
         enum Delegate: Equatable {
-            case finishWriting
+            case quitWriting
+            case saveWriting(String, WriteImage?, Date)
         }
     }
     
@@ -55,7 +59,13 @@ struct WriteFeature {
                 
             case .cancelButtonTapped:
                 return .run { send in
-                    await send(.delegate(.finishWriting))
+                    await send(.delegate(.quitWriting))
+                    await self.dismiss()
+                }
+                
+            case .saveButtonTapped:
+                return .run { [state = state] send in
+                    await send(.delegate(.saveWriting(state.text, state.image, state.writeDate)))
                     await self.dismiss()
                 }
                 
@@ -63,6 +73,10 @@ struct WriteFeature {
                 state.avatarItem = nil
                 state.image = nil
                 state.isAnimate = false
+                return .none
+                
+            case let .datePickerTapped(date):
+                state.writeDate = date
                 return .none
                 
             case let .photoLibrary(image):

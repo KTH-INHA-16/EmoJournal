@@ -10,6 +10,7 @@ import PhotosUI
 
 struct WriteImage: Identifiable, Equatable {
     let id: UUID = UUID()
+    var data: Data = Data()
     var image: UIImage? = nil
 }
 
