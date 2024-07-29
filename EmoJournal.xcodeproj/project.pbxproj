@@ -24,12 +24,16 @@
 		DB5CCB6F2C379467006F7A2C /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5CCB6E2C379467006F7A2C /* BackgroundView.swift */; };
 		DB5CCB712C37D71D006F7A2C /* SelectColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5CCB702C37D71D006F7A2C /* SelectColorView.swift */; };
 		DB5CCB732C37DF71006F7A2C /* Collection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5CCB722C37DF71006F7A2C /* Collection+.swift */; };
+		DBDBB9E52C5323E10013EEE7 /* WriteDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DBDBB9E32C5323E10013EEE7 /* WriteDataModel.xcdatamodeld */; };
 		DBDE84AE2C3E0DFB00F4867F /* BackgroundFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE84AD2C3E0DFB00F4867F /* BackgroundFeature.swift */; };
 		DBDE84B22C3E796F00F4867F /* SelectFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE84B12C3E796F00F4867F /* SelectFeature.swift */; };
 		DBDE84C42C41268D00F4867F /* Enviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE84C32C41268D00F4867F /* Enviroment.swift */; };
 		DBDE84F52C44DD4900F4867F /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE84F42C44DD4900F4867F /* ListView.swift */; };
 		DBDE84F72C44DD8800F4867F /* ListFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE84F62C44DD8800F4867F /* ListFeature.swift */; };
 		DBDE84F92C4516EC00F4867F /* ListDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE84F82C4516EC00F4867F /* ListDetailView.swift */; };
+		DBDF2AF62C5786F900ADE8E6 /* WriteDataEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDF2AF42C5786F900ADE8E6 /* WriteDataEntity+CoreDataClass.swift */; };
+		DBDF2AF72C5786F900ADE8E6 /* WriteDataEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDF2AF52C5786F900ADE8E6 /* WriteDataEntity+CoreDataProperties.swift */; };
+		DBDF2AF92C57881000ADE8E6 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDF2AF82C57881000ADE8E6 /* Persistence.swift */; };
 		DBEDAFE52C3B6BCB005C675C /* GraidentModifer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEDAFE42C3B6BCB005C675C /* GraidentModifer.swift */; };
 		DBEDAFE72C3B6C03005C675C /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEDAFE62C3B6C03005C675C /* View+.swift */; };
 /* End PBXBuildFile section */
@@ -52,12 +56,16 @@
 		DB5CCB6E2C379467006F7A2C /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		DB5CCB702C37D71D006F7A2C /* SelectColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorView.swift; sourceTree = "<group>"; };
 		DB5CCB722C37DF71006F7A2C /* Collection+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+.swift"; sourceTree = "<group>"; };
+		DBDBB9E42C5323E10013EEE7 /* WriteDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WriteDataModel.xcdatamodel; sourceTree = "<group>"; };
 		DBDE84AD2C3E0DFB00F4867F /* BackgroundFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundFeature.swift; sourceTree = "<group>"; };
 		DBDE84B12C3E796F00F4867F /* SelectFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFeature.swift; sourceTree = "<group>"; };
 		DBDE84C32C41268D00F4867F /* Enviroment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enviroment.swift; sourceTree = "<group>"; };
 		DBDE84F42C44DD4900F4867F /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		DBDE84F62C44DD8800F4867F /* ListFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFeature.swift; sourceTree = "<group>"; };
 		DBDE84F82C4516EC00F4867F /* ListDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailView.swift; sourceTree = "<group>"; };
+		DBDF2AF42C5786F900ADE8E6 /* WriteDataEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WriteDataEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DBDF2AF52C5786F900ADE8E6 /* WriteDataEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WriteDataEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DBDF2AF82C57881000ADE8E6 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		DBEDAFE42C3B6BCB005C675C /* GraidentModifer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraidentModifer.swift; sourceTree = "<group>"; };
 		DBEDAFE62C3B6C03005C675C /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +93,8 @@
 		DB5CCB3B2C367BEB006F7A2C = {
 			isa = PBXGroup;
 			children = (
+				DBDF2AF42C5786F900ADE8E6 /* WriteDataEntity+CoreDataClass.swift */,
+				DBDF2AF52C5786F900ADE8E6 /* WriteDataEntity+CoreDataProperties.swift */,
 				DB5CCB462C367BEB006F7A2C /* EmoJournal */,
 				DB5CCB452C367BEB006F7A2C /* Products */,
 				DB15B7662C4E516500113F13 /* Frameworks */,
@@ -123,6 +133,8 @@
 				DB15B7692C4F7C4100113F13 /* PhotoClient.swift */,
 				DB15B76B2C4F96B000113F13 /* PhotoClientModel.swift */,
 				DB15B76D2C4FA0E100113F13 /* ListViewFeature.swift */,
+				DBDBB9E32C5323E10013EEE7 /* WriteDataModel.xcdatamodeld */,
+				DBDF2AF82C57881000ADE8E6 /* Persistence.swift */,
 			);
 			path = EmoJournal;
 			sourceTree = "<group>";
@@ -239,8 +251,12 @@
 				DB15B75E2C4E40F900113F13 /* WriteFeature.swift in Sources */,
 				DB3E343B2C4A57BC00BED154 /* SpeechClientModel.swift in Sources */,
 				DBEDAFE72C3B6C03005C675C /* View+.swift in Sources */,
+				DBDF2AF62C5786F900ADE8E6 /* WriteDataEntity+CoreDataClass.swift in Sources */,
+				DBDF2AF72C5786F900ADE8E6 /* WriteDataEntity+CoreDataProperties.swift in Sources */,
 				DB3E34392C4A56B300BED154 /* SpeechClient.swift in Sources */,
 				DBDE84F52C44DD4900F4867F /* ListView.swift in Sources */,
+				DBDF2AF92C57881000ADE8E6 /* Persistence.swift in Sources */,
+				DBDBB9E52C5323E10013EEE7 /* WriteDataModel.xcdatamodeld in Sources */,
 				DB5CCB482C367BEB006F7A2C /* EmoJournalApp.swift in Sources */,
 				DBEDAFE52C3B6BCB005C675C /* GraidentModifer.swift in Sources */,
 				DB5CCB732C37DF71006F7A2C /* Collection+.swift in Sources */,
@@ -504,6 +520,20 @@
 			productName = ComposableArchitecture;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		DBDBB9E32C5323E10013EEE7 /* WriteDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DBDBB9E42C5323E10013EEE7 /* WriteDataModel.xcdatamodel */,
+			);
+			currentVersion = DBDBB9E42C5323E10013EEE7 /* WriteDataModel.xcdatamodel */;
+			name = WriteDataModel.xcdatamodeld;
+			path = /Users/taehun/Desktop/EmoJournal/EmoJournal/WriteDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = DB5CCB3C2C367BEB006F7A2C /* Project object */;
 }
