@@ -133,8 +133,8 @@
 				DB15B7692C4F7C4100113F13 /* PhotoClient.swift */,
 				DB15B76B2C4F96B000113F13 /* PhotoClientModel.swift */,
 				DB15B76D2C4FA0E100113F13 /* ListViewFeature.swift */,
-				DBDBB9E32C5323E10013EEE7 /* WriteDataModel.xcdatamodeld */,
 				DBDF2AF82C57881000ADE8E6 /* Persistence.swift */,
+				DBDBB9E32C5323E10013EEE7 /* WriteDataModel.xcdatamodeld */,
 			);
 			path = EmoJournal;
 			sourceTree = "<group>";

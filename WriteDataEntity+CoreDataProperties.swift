@@ -25,3 +25,7 @@ extension WriteDataEntity {
 extension WriteDataEntity : Identifiable {
 
 }
+
+enum CoreDataKey: String {
+    case content, imgData, writeDate
+}

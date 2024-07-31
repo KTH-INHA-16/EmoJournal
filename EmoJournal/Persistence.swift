@@ -7,11 +7,18 @@
 
 import CoreData
 
-struct PersistenceController {
+final class PersistenceController {
     static let shared = PersistenceController()
     
+    private lazy var entity: NSEntityDescription? = {
+        return NSEntityDescription.entity(forEntityName: "WriteDataEntity", in: container.viewContext)
+    }()
     
     let container: NSPersistentCloudKitContainer
+    
+    enum Failure: Error {
+        case nilError
+    }
     
     init() {
         container = NSPersistentCloudKitContainer(name: "WriteDataModel")
@@ -24,10 +31,8 @@ struct PersistenceController {
         container.viewContext.automaticallyMergesChangesFromParent = true
     }
     
-    func save(_ attributes: [String: Any]) -> Void {
-        let entity = NSEntityDescription.entity(forEntityName: "WriteDataEntity", in: container.viewContext)
-        
-        container.newBackgroundContext().perform { [ weak container = self.container] in
+    func save(_ attributes: [String: Any?]) -> Void {
+        container.viewContext.perform { [ weak container = self.container, weak entity = self.entity] in
             guard let container = container, let entity = entity else {
                 return
             }
@@ -40,6 +45,23 @@ struct PersistenceController {
             } catch let error {
                 print(error)
             }
+        }
+    }
+    
+    func fetch<T: NSManagedObject>(_ completion: @escaping (Result<[T], Error>) -> Void) ->  Void {
+        container.viewContext.perform { [container = self.container] in
+            do {
+                let context = try container.viewContext.fetch(T.fetchRequest())
+                guard let context = context as? [T] else {
+                    completion(.failure(Failure.nilError))
+                    return
+                }
+                
+                completion(.success(context))
+            } catch {
+                completion(.failure(error))
+            }
+            
         }
     }
 }
