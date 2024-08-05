@@ -16,10 +16,6 @@ final class PersistenceController {
     
     let container: NSPersistentCloudKitContainer
     
-    enum Failure: Error {
-        case nilError
-    }
-    
     init() {
         container = NSPersistentCloudKitContainer(name: "WriteDataModel")
         container.loadPersistentStores { _, error in
@@ -48,20 +44,16 @@ final class PersistenceController {
         }
     }
     
-    func fetch<T: NSManagedObject>(_ completion: @escaping (Result<[T], Error>) -> Void) ->  Void {
-        container.viewContext.perform { [container = self.container] in
-            do {
-                let context = try container.viewContext.fetch(T.fetchRequest())
-                guard let context = context as? [T] else {
-                    completion(.failure(Failure.nilError))
-                    return
-                }
-                
-                completion(.success(context))
-            } catch {
-                completion(.failure(error))
+    func fetch<T: NSManagedObject>() -> [T] {
+        do {
+            let context = try container.viewContext.fetch(T.fetchRequest())
+            guard let context = context as? [T] else {
+                return []
             }
             
+            return context
+        } catch {
+            return []
         }
     }
 }

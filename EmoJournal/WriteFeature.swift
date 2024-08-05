@@ -64,12 +64,6 @@ struct WriteFeature {
                 }
                 
             case .saveButtonTapped:
-                let value: [String: Any?] = [
-                    CoreDataKey.content.rawValue: state.text,
-                    CoreDataKey.writeDate.rawValue: state.writeDate,
-                    CoreDataKey.imgData.rawValue: state.image?.data
-                ]
-                PersistenceController.shared.save(value)
                 return .run { [state = state] send in
                     await send(.delegate(.saveWriting(state.text, state.image, state.writeDate)))
                     await self.dismiss()
