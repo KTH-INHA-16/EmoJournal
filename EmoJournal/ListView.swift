@@ -14,22 +14,14 @@ struct ListView: View {
     
     var body: some View {
         ZStack {
+            
             ScrollView {
-                ListDetailView()
+                ForEach(store.list) { data in
+                    ListDetailView(store: Store(initialState: ListDetailFeature.State(data: data)) {
+                        ListDetailFeature()
+                    })
                     .padding(.bottom, 30)
-                ListDetailView()
-                    .padding(.bottom, 30)
-                ListDetailView()
-                    .padding(.bottom, 30)
-                ListDetailView()
-                    .padding(.bottom, 30)
-                ListDetailView()
-                    .padding(.bottom, 30)
-                ListDetailView()
-                    .padding(.bottom, 30)
-                ListDetailView()
-                    .padding(.bottom, 30)
-                    
+                }
             }
             .background(.opacity(0.0))
             .scrollIndicators(.hidden)
@@ -63,6 +55,7 @@ struct ListView: View {
             WriteView(store: WriteFeatureStore)
         })
         .onAppear {
+            store.send(.loadPersistenceInstances)
             UIScrollView.appearance().bounces = false
         }
         .onDisappear {

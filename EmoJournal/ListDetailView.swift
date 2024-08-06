@@ -5,9 +5,12 @@
 //  Created by 김태훈 on 7/15/24.
 //
 
+import ComposableArchitecture
 import SwiftUI
 
 struct ListDetailView: View {
+    let store: StoreOf<ListDetailFeature>
+    
     var body: some View {
         VStack {
             HStack {
@@ -87,5 +90,7 @@ struct ListDetailView: View {
 }
 
 #Preview {
-    ListDetailView()
+    ListDetailView(store: Store(initialState: ListDetailFeature.State()) {
+        ListDetailFeature()
+    })
 }

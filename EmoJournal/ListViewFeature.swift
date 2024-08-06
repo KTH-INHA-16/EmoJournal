@@ -8,10 +8,11 @@
 import ComposableArchitecture
 import Foundation
 
-class JournalModel {
+class JournalModel: Identifiable {
     var content: String = ""
     var imageData: Data?
     var date: Date
+    var id: UUID = UUID()
     
     init(content: String, imageData: Data? = nil, date: Date) {
         self.content = content

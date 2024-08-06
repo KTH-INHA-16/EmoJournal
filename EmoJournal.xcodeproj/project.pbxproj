@@ -29,7 +29,7 @@
 		DBDE84B22C3E796F00F4867F /* SelectFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE84B12C3E796F00F4867F /* SelectFeature.swift */; };
 		DBDE84C42C41268D00F4867F /* Enviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE84C32C41268D00F4867F /* Enviroment.swift */; };
 		DBDE84F52C44DD4900F4867F /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE84F42C44DD4900F4867F /* ListView.swift */; };
-		DBDE84F72C44DD8800F4867F /* ListFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE84F62C44DD8800F4867F /* ListFeature.swift */; };
+		DBDE84F72C44DD8800F4867F /* ListDetailFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE84F62C44DD8800F4867F /* ListDetailFeature.swift */; };
 		DBDE84F92C4516EC00F4867F /* ListDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE84F82C4516EC00F4867F /* ListDetailView.swift */; };
 		DBDF2AF62C5786F900ADE8E6 /* WriteDataEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDF2AF42C5786F900ADE8E6 /* WriteDataEntity+CoreDataClass.swift */; };
 		DBDF2AF72C5786F900ADE8E6 /* WriteDataEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDF2AF52C5786F900ADE8E6 /* WriteDataEntity+CoreDataProperties.swift */; };
@@ -61,7 +61,7 @@
 		DBDE84B12C3E796F00F4867F /* SelectFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFeature.swift; sourceTree = "<group>"; };
 		DBDE84C32C41268D00F4867F /* Enviroment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enviroment.swift; sourceTree = "<group>"; };
 		DBDE84F42C44DD4900F4867F /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
-		DBDE84F62C44DD8800F4867F /* ListFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFeature.swift; sourceTree = "<group>"; };
+		DBDE84F62C44DD8800F4867F /* ListDetailFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailFeature.swift; sourceTree = "<group>"; };
 		DBDE84F82C4516EC00F4867F /* ListDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailView.swift; sourceTree = "<group>"; };
 		DBDF2AF42C5786F900ADE8E6 /* WriteDataEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WriteDataEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		DBDF2AF52C5786F900ADE8E6 /* WriteDataEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WriteDataEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -120,8 +120,9 @@
 				DB5CCB702C37D71D006F7A2C /* SelectColorView.swift */,
 				DB5CCB472C367BEB006F7A2C /* EmoJournalApp.swift */,
 				DBDE84F42C44DD4900F4867F /* ListView.swift */,
+				DB15B76D2C4FA0E100113F13 /* ListViewFeature.swift */,
 				DBDE84F82C4516EC00F4867F /* ListDetailView.swift */,
-				DBDE84F62C44DD8800F4867F /* ListFeature.swift */,
+				DBDE84F62C44DD8800F4867F /* ListDetailFeature.swift */,
 				DB5CCB552C367C95006F7A2C /* MainView.swift */,
 				DB3E342F2C46612900BED154 /* WriteView.swift */,
 				DB15B75D2C4E40F900113F13 /* WriteFeature.swift */,
@@ -132,7 +133,6 @@
 				DB3E343A2C4A57BC00BED154 /* SpeechClientModel.swift */,
 				DB15B7692C4F7C4100113F13 /* PhotoClient.swift */,
 				DB15B76B2C4F96B000113F13 /* PhotoClientModel.swift */,
-				DB15B76D2C4FA0E100113F13 /* ListViewFeature.swift */,
 				DBDF2AF82C57881000ADE8E6 /* Persistence.swift */,
 				DBDBB9E32C5323E10013EEE7 /* WriteDataModel.xcdatamodeld */,
 			);
@@ -246,7 +246,7 @@
 				DBDE84AE2C3E0DFB00F4867F /* BackgroundFeature.swift in Sources */,
 				DB15B76C2C4F96B000113F13 /* PhotoClientModel.swift in Sources */,
 				DB15B76A2C4F7C4100113F13 /* PhotoClient.swift in Sources */,
-				DBDE84F72C44DD8800F4867F /* ListFeature.swift in Sources */,
+				DBDE84F72C44DD8800F4867F /* ListDetailFeature.swift in Sources */,
 				DB5CCB712C37D71D006F7A2C /* SelectColorView.swift in Sources */,
 				DB15B75E2C4E40F900113F13 /* WriteFeature.swift in Sources */,
 				DB3E343B2C4A57BC00BED154 /* SpeechClientModel.swift in Sources */,
