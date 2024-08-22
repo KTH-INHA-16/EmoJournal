@@ -13,31 +13,19 @@ struct ListDetailView: View {
     
     var body: some View {
         VStack {
-            HStack {
-                Text("hello")
-                    .font(.largeTitle)
-                    .fontWeight(.light)
-                    .padding(.top, 15)
-                    .padding(.leading, 10)
-                
-                Spacer()
-                
-                Text("Lorem Ipsum")
-                    .padding(.top, 15)
-                    .padding(.trailing, 10)
+            if let data = store.data.imageData,
+               let image = UIImage(data: data) {
+                HStack {
+                    Image(uiImage: image)
+                        .resizable()
+                        .frame(width: UIScreen.main.bounds.width - 40)
+                        .clipShape(RoundedRectangle(cornerRadius: 12.0))
+                }
+                .frame(height: 140)
+                .background(.gray.opacity(0.3))
             }
-            .frame(height: 50)
-            .padding(.bottom, 10)
             
-            HStack {
-                Image("")
-                    .frame(width: UIScreen.main.bounds.width - 40)
-                    .frame(minHeight: 0, maxHeight: 140)
-            }
-            .frame(height: 140)
-            .background(.gray.opacity(0.3))
-            
-            Text("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")
+            Text(store.data.content)
                 .frame(maxHeight: 120)
                 .padding(.horizontal, 10)
                 .multilineTextAlignment(.leading)
@@ -46,7 +34,8 @@ struct ListDetailView: View {
                 .padding(.vertical, 5)
             
             HStack {
-                Text("2023년 05월 14일")
+                Text(store.data.date.toyyyymmdd())
+                    .frame(height: 30)
                     .padding(.leading, 10)
                 
                 Spacer()
@@ -76,7 +65,7 @@ struct ListDetailView: View {
             }
             .frame(height: 30)
         }
-        .frame(minHeight: 200, maxHeight: 400)
+        .frame(minHeight: 180, maxHeight: 420)
         .background(.opacity(0.0))
         .background(.thinMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 12))

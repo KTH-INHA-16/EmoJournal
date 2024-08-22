@@ -17,7 +17,6 @@ struct ListDetailFeature {
     }
     
     enum Action {
-        
     }
     
     var body: some ReducerOf<Self> {
