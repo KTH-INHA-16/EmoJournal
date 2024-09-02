@@ -56,4 +56,23 @@ final class PersistenceController {
             return []
         }
     }
+    
+    func delete(predicate: NSPredicate? = nil) -> Void {
+        container.viewContext.perform { [weak container = self.container, weak entity = self.entity] in
+            guard let entity = entity, let entityName = entity.name else {
+                return
+            }
+            
+            let request = NSFetchRequest<NSFetchRequestResult>.init(entityName: entityName)
+            request.predicate = predicate
+            
+            do {
+                let delete = NSBatchDeleteRequest(fetchRequest: request)
+                try container?.viewContext.execute(delete)
+                
+            } catch let error {
+                print(error)
+            }
+        }
+    }
 }

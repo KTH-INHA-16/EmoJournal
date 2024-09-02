@@ -17,11 +17,29 @@ struct ListDetailFeature {
     }
     
     enum Action {
+        case deleteButtonTapped
+        case editButtonTapped
+        case delete(Delegate)
+        
+        enum Delegate: Equatable {
+            case deleteData
+            case editData(JournalModel)
+        }
     }
     
     var body: some ReducerOf<Self> {
         Reduce { state, action in
-            return .none
+            switch action {
+            case .deleteButtonTapped:
+                PersistenceController.shared.delete(predicate: NSPredicate(format: "id = %@", state.data.id as CVarArg))
+                
+                return .send(.delete(.deleteData))
+            case .editButtonTapped:
+                return .send(.delete(.editData(state.data)))
+            case .delete:
+                return .none
+
+            }
         }
     }
     

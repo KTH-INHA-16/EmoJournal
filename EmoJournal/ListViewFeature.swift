@@ -8,7 +8,11 @@
 import ComposableArchitecture
 import Foundation
 
-class JournalModel: Identifiable {
+class JournalModel: Identifiable, Equatable {
+    static func == (lhs: JournalModel, rhs: JournalModel) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     var content: String = ""
     var imageData: Data?
     var date: Date
@@ -31,6 +35,7 @@ struct ListViewFeature {
     
     enum Action {
         case finishWriting(PresentationAction<WriteFeature.Action>)
+        case menuButtonTouched(PresentationAction<ListDetailFeature.Action>)
         case writeButtonTapped
         case loadPersistenceInstances
     }
@@ -45,6 +50,7 @@ struct ListViewFeature {
                 return .none
             case let .finishWriting(.presented(.delegate(.saveWriting(text, image, date)))):
                 let value: [String: Any?] = [
+                    CoreDataKey.id.rawValue: UUID(),
                     CoreDataKey.content.rawValue: text,
                     CoreDataKey.writeDate.rawValue: date,
                     CoreDataKey.imgData.rawValue: image?.data
@@ -67,6 +73,11 @@ struct ListViewFeature {
                 }
                     
                 state.list = journalList
+                return .none
+            case .menuButtonTouched(.presented(.delete(.deleteData))):
+                return .send(.loadPersistenceInstances)
+            case let .menuButtonTouched(.presented(.delete(.editData(data)))):
+                // MARK: 쓰기 화면 열리면서 데이터 넘겨주기
                 return .none
             default:
                 return .none

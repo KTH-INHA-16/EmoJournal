@@ -16,6 +16,7 @@ extension WriteDataEntity {
         return NSFetchRequest<WriteDataEntity>(entityName: "WriteDataEntity")
     }
 
+    @NSManaged public var id: UUID?
     @NSManaged public var content: String?
     @NSManaged public var imgData: Data?
     @NSManaged public var writeDate: Date?
@@ -27,5 +28,5 @@ extension WriteDataEntity : Identifiable {
 }
 
 enum CoreDataKey: String {
-    case content, imgData, writeDate
+    case id, content, imgData, writeDate
 }

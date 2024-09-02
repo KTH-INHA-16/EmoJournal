@@ -42,7 +42,7 @@ struct ListDetailView: View {
                 
                 Menu(content: {
                     Button(action: {
-                        
+                        store.send(.editButtonTapped)
                     }, label: {
                         Image(systemName: "pencil")
                         Text("수정")
@@ -50,7 +50,7 @@ struct ListDetailView: View {
                     
                     Button(role: .destructive,
                            action: {
-                        
+                        store.send(.deleteButtonTapped)
                     }, label: {
                         Group {
                             Text("삭제")
