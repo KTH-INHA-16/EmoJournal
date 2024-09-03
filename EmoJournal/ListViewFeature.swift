@@ -35,8 +35,9 @@ struct ListViewFeature {
     
     enum Action {
         case finishWriting(PresentationAction<WriteFeature.Action>)
-        case menuButtonTouched(PresentationAction<ListDetailFeature.Action>)
         case writeButtonTapped
+        case deleteButtonTapped(JournalModel)
+        case editButtonTapped(JournalModel)
         case loadPersistenceInstances
     }
     
@@ -74,10 +75,18 @@ struct ListViewFeature {
                     
                 state.list = journalList
                 return .none
-            case .menuButtonTouched(.presented(.delete(.deleteData))):
+            case let .deleteButtonTapped(data):
+                PersistenceController.shared.delete(predicate: NSPredicate(format: "id = %@", data.id as CVarArg))
+                
                 return .send(.loadPersistenceInstances)
-            case let .menuButtonTouched(.presented(.delete(.editData(data)))):
-                // MARK: 쓰기 화면 열리면서 데이터 넘겨주기
+            case let .editButtonTapped(data):
+                var writeState = WriteFeature.State()
+                let image = WriteImage(data: data.imageData)
+                writeState.image = image
+                writeState.text = data.content
+                writeState.writeDate = data.date
+                
+                state.finishWriting = writeState
                 return .none
             default:
                 return .none
