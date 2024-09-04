@@ -57,22 +57,42 @@ final class PersistenceController {
         }
     }
     
+    func update(attributes: [String: Any?], predicate: NSPredicate) {
+        guard let entity = self.entity, let name = entity.name else {
+            return
+        }
+        
+        let request = NSFetchRequest<NSFetchRequestResult>.init(entityName: name)
+        do {
+            let context = self.container.viewContext
+            let result = try context.fetch(request)
+            guard let updateModel = result.first as? NSManagedObject else { return }
+            
+            for element in attributes {
+                updateModel.setValue(element.value, forKey: element.key)
+            }
+            
+            try context.save()
+            
+        } catch let error {
+            print(error)
+        }
+    }
+    
     func delete(predicate: NSPredicate? = nil) -> Void {
-        container.viewContext.perform { [weak container = self.container, weak entity = self.entity] in
-            guard let entity = entity, let entityName = entity.name else {
-                return
-            }
+        guard let entity = self.entity, let entityName = entity.name else {
+            return
+        }
+        
+        let request = NSFetchRequest<NSFetchRequestResult>.init(entityName: entityName)
+        request.predicate = predicate
+        
+        do {
+            let delete = NSBatchDeleteRequest(fetchRequest: request)
+            try self.container.viewContext.execute(delete)
             
-            let request = NSFetchRequest<NSFetchRequestResult>.init(entityName: entityName)
-            request.predicate = predicate
-            
-            do {
-                let delete = NSBatchDeleteRequest(fetchRequest: request)
-                try container?.viewContext.execute(delete)
-                
-            } catch let error {
-                print(error)
-            }
+        } catch let error {
+            print(error)
         }
     }
 }

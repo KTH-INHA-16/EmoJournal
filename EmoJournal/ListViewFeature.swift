@@ -6,7 +6,7 @@
 //
 
 import ComposableArchitecture
-import Foundation
+import UIKit
 
 class JournalModel: Identifiable, Equatable {
     static func == (lhs: JournalModel, rhs: JournalModel) -> Bool {
@@ -18,10 +18,11 @@ class JournalModel: Identifiable, Equatable {
     var date: Date
     var id: UUID = UUID()
     
-    init(content: String, imageData: Data? = nil, date: Date) {
+    init(content: String, imageData: Data? = nil, date: Date, id: UUID) {
         self.content = content
         self.imageData = imageData
         self.date = date
+        self.id = id
     }
 }
 
@@ -46,17 +47,25 @@ struct ListViewFeature {
             switch action {
             case .writeButtonTapped:
                 state.finishWriting = WriteFeature.State()
-                return .none
+                return .run { send in
+                    await send(.loadPersistenceInstances)
+                }
             case .finishWriting(.presented(.delegate(.quitWriting))):
                 return .none
-            case let .finishWriting(.presented(.delegate(.saveWriting(text, image, date)))):
+            case let .finishWriting(.presented(.delegate(.saveWriting(text, image, date, id, isEditing)))):
                 let value: [String: Any?] = [
-                    CoreDataKey.id.rawValue: UUID(),
+                    CoreDataKey.id.rawValue: id,
                     CoreDataKey.content.rawValue: text,
                     CoreDataKey.writeDate.rawValue: date,
                     CoreDataKey.imgData.rawValue: image?.data
                 ]
-                PersistenceController.shared.save(value)
+                if !isEditing {
+                    PersistenceController.shared.save(value)
+                }
+                else {
+                    let predicate = NSPredicate(format: "id = %@", id as CVarArg)
+                    PersistenceController.shared.update(attributes: value, predicate: predicate)
+                }
                 return .run { send in
                     await send(.loadPersistenceInstances)
                 }
@@ -66,25 +75,27 @@ struct ListViewFeature {
                 var journalList: [JournalModel] = []
                 
                 result.forEach {
-                    if let content = $0.content,
-                       let date = $0.writeDate {
-                        
-                        journalList.append(JournalModel(content: content, imageData: $0.imgData, date: date))
+                    if let content = $0.content, let date = $0.writeDate, let id = $0.id{
+                        journalList.append(JournalModel(content: content, imageData: $0.imgData, date: date, id: id))
                     }
                 }
-                    
                 state.list = journalList
                 return .none
             case let .deleteButtonTapped(data):
                 PersistenceController.shared.delete(predicate: NSPredicate(format: "id = %@", data.id as CVarArg))
-                
-                return .send(.loadPersistenceInstances)
+                return .run { send in
+                    await send(.loadPersistenceInstances)
+                }
             case let .editButtonTapped(data):
                 var writeState = WriteFeature.State()
-                let image = WriteImage(data: data.imageData)
-                writeState.image = image
+                if let imageData = data.imageData {
+                    let image = WriteImage(data: imageData, image: UIImage(data: imageData))
+                    writeState.image = image
+                }
                 writeState.text = data.content
                 writeState.writeDate = data.date
+                writeState.id = data.id
+                writeState.isEditing = true
                 
                 state.finishWriting = writeState
                 return .none

@@ -22,6 +22,8 @@ struct WriteFeature {
         var writeDate = Date()
         var image: WriteImage? = nil
         var avatarItem: PhotosPickerItem? = nil
+        var id = UUID()
+        var isEditing = false
     }
     
     enum Action {
@@ -43,7 +45,7 @@ struct WriteFeature {
         
         enum Delegate: Equatable {
             case quitWriting
-            case saveWriting(String, WriteImage?, Date)
+            case saveWriting(String, WriteImage?, Date, UUID, Bool)
         }
     }
     
@@ -65,7 +67,7 @@ struct WriteFeature {
                 
             case .saveButtonTapped:
                 return .run { [state = state] send in
-                    await send(.delegate(.saveWriting(state.text, state.image, state.writeDate)))
+                    await send(.delegate(.saveWriting(state.text, state.image, state.writeDate, state.id, state.isEditing)))
                     await self.dismiss()
                 }
                 
